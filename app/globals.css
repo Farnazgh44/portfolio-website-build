@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-inter);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-rose: var(--rose);
+  --color-stone: var(--stone);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root {
+  /* Brand palette */
+  --ink: #191c20;
+  --paper: #fffafc;
+  --rose: #9f737a;
+  --stone: #787475;
+
+  --radius: 0.875rem;
+
+  --background: #191c20;
+  --foreground: #fffafc;
+  --card: #221f24;
+  --card-foreground: #fffafc;
+  --popover: #191c20;
+  --popover-foreground: #fffafc;
+  --primary: #fffafc;
+  --primary-foreground: #191c20;
+  --secondary: #2a282d;
+  --secondary-foreground: #fffafc;
+  --muted: #2a282d;
+  --muted-foreground: #a5a1a2;
+  --accent: #9f737a;
+  --accent-foreground: #fffafc;
+  --destructive: #9f737a;
+  --border: rgba(255, 250, 252, 0.14);
+  --input: rgba(255, 250, 252, 0.18);
+  --ring: #9f737a;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* Triple-stop page gradient: ink -> rose -> ink, used across pages */
+.brand-gradient {
+  background:
+    linear-gradient(
+      180deg,
+      #191c20 0%,
+      #191c20 22%,
+      #9f737a 55%,
+      #191c20 92%,
+      #191c20 100%
+    );
+}
+
+@keyframes arrow-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(3px);
+  }
+}
+.arrow-pulse {
+  animation: arrow-pulse 1.6s ease-in-out infinite;
+}
