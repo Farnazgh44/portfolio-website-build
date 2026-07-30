@@ -103,12 +103,14 @@ export default function AboutPage() {
           />
 
           {/* Layer 2: No BG.png — portrait cutout, sits in front of BG but behind gradient */}
+          {/* ── MOBILE: change -translate-y-[20%] to move portrait up (increase %) or down (decrease %) ── */}
+          {/* ── DESKTOP: md:translate-y-0 resets to original — do not edit the md: value ── */}
           <Image
             src="/No BG.png"
             alt="Portrait of Farnaz Gholami"
             fill
             sizes="100vw"
-            className="object-contain object-[80%_100%]"
+            className="object-contain object-[80%_100%] -translate-y-[20%] md:translate-y-0"
           />
 
           {/* Layer 3: gradient overlay — transparent at top -> solid ink at bottom */}
