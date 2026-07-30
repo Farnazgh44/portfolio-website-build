@@ -32,7 +32,7 @@ export default function HomePage() {
           {/* Gradient layer: transparent at top -> solid ink at bottom */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/40 to-ink" />
 
-          <div className="relative flex min-h-[100svh] flex-col px-6 pb-12 pt-60 md:px-10 md:pb-24 md:pt-48 lg:px-16 xl:px-20 2xl:px-32">
+          <div className="relative flex min-h-[100svh] flex-col px-6 pb-[5svh] pt-60 md:px-10 md:pb-24 md:pt-48 lg:px-16 xl:px-20 2xl:px-32">
             {/* Name + subheading near the top */}
             <div>
               <h1 className="text-balance text-[36px] font-bold leading-[1.05] tracking-tight text-paper md:text-6xl lg:text-7xl">
