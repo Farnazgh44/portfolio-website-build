@@ -23,7 +23,6 @@ export default function HomePage() {
             muted
             loop
             playsInline
-            poster="/hero-poster.png"
             aria-hidden
           >
             {/* Replace with your own hero video file */}
