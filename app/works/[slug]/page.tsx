@@ -162,7 +162,7 @@ export default async function CaseStudyPage({
       <div className="px-6 md:px-10 lg:px-16 xl:px-20 2xl:px-32">
 
         {/* Figma button */}
-        <div className="flex justify-end pt-8 md:pt-10">
+        <div className="flex justify-start md:justify-end pt-8 md:pt-10">
           <a
             href={project.figmaUrl}
             target="_blank"

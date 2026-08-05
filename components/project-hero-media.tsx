@@ -24,9 +24,12 @@ export function ProjectHeroMedia({
   const current = videos[index]
 
   return (
-    <section className="relative min-h-[90vh] overflow-hidden">
+    // MOBILE: min-h-[55vh] = hero height. DESKTOP: md:min-h-[90vh]
+    <section className="relative min-h-[55vh] md:min-h-[90vh] overflow-hidden">
 
       {/* Full-bleed background video */}
+      {/* ── MOBILE object-position: first value = left/right, second = up/down ── */}
+      {/* ── DESKTOP: md:object-center — do not edit ── */}
       <video
         key={current.src}
         src={current.src}
@@ -34,7 +37,7 @@ export function ProjectHeroMedia({
         muted
         loop
         playsInline
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-[70%_40%] md:object-center"
         aria-hidden
       />
 
