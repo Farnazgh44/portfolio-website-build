@@ -22,6 +22,7 @@ export type Project = {
   description: string
   tags: string[]
   figmaUrl: string
+  figmaLabel?: string
   overview: string[]
   table: {
     tools: string
@@ -48,7 +49,8 @@ export const projects: Project[] = [
     description:
       'Designed wireframes, interactive prototypes, branding, and marketing materials for modern, user-centered digital experiences.',
     tags: ['Figma', 'Illustrator', 'Photoshop'],
-    figmaUrl: 'https://figma.com',
+    figmaUrl: 'https://www.zagrosia.ca/',
+    figmaLabel: 'View the Website',
     overview: [
       'Zagrosia Engineering is a newly established structural engineering firm backed by more than **35 years of industry experience** and **200+ completed projects**. As the company prepared to launch its digital presence, it needed a website and visual identity that would communicate credibility, innovation, and technical expertise while differentiating itself within a competitive engineering industry.',
       'As the **UI/UX Designer and UX Researcher**, I was responsible for designing the company\'s digital experience from the ground up. My role extended beyond website design to include **competitive analysis, brand refinement, visual identity, business card redesign, wireframing, interface design, and interactive prototyping**.',
@@ -154,7 +156,8 @@ export const projects: Project[] = [
     description:
       'Freelance project involving wireframes, responsive web design, and front-end development tailored to the brand\'s identity.',
     tags: ['Figma', 'Photoshop', 'Web Dev', 'Canva'],
-    figmaUrl: 'https://figma.com',
+    figmaUrl: 'https://www.dogwoodlandgardening.com/',
+    figmaLabel: 'View the Website',
     overview: [
       'Dogwood Landscaping is a **locally owned Canadian** landscaping and property maintenance company offering services such as **landscaping, gardening, pressure washing, gutter cleaning, and seasonal outdoor maintenance**.',
       'The client\'s goal was to establish a **professional online presence** that clearly communicates their services while making it easy for potential customers to request quotes and contact the business. Because the company\'s target audience ranges from **young homeowners to seniors**, usability and accessibility were key priorities.',
@@ -274,7 +277,7 @@ export const projects: Project[] = [
     description:
       'An app concept for hikers and outdoor enthusiasts, focused on accessibility, usability, and a more practical, visually appealing experience.',
     tags: ['Figma', 'Photoshop', 'Illustrator'],
-    figmaUrl: 'https://figma.com',
+    figmaUrl: 'https://www.figma.com/proto/shmElE2YMrEHtmo37AlTfj/Untitled?node-id=1-2&t=KV2yPrrBPHsGq9gg-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
     overview: [
       'AlpineLink is an **all-season outdoor adventure mobile app** designed for hikers, skiers, cyclists, and snowboarders. It brings together trail discovery, weather updates, activity tracking, and community features into a single platform, helping outdoor enthusiasts **plan adventures with greater confidence and convenience**.',
       'The primary goal was to create an **intuitive mobile experience** that enables users to quickly find reliable trail information, monitor changing weather conditions, record their activities, and connect with other adventurers — all while minimizing the effort required to access essential information.',
@@ -414,7 +417,7 @@ export const projects: Project[] = [
     description:
       'BCIT UI/UX project focused on redesigning Reddit with a cleaner, more modern, and user-friendly experience.',
     tags: ['Figma', 'Illustrator', 'Photoshop'],
-    figmaUrl: 'https://figma.com',
+    figmaUrl: 'https://www.figma.com/proto/Lm7j5gPEe7puHmVruRaYv6/Untitled?node-id=79-1182&t=x4iX0ZnA5cu9ehFV-1&scaling=scale-down&content-scaling=fixed&page-id=79%3A1181',
     overview: [
       'Reddit is one of the world\'s largest online discussion platforms, bringing together millions of users across thousands of communities to share knowledge, ask questions, and participate in conversations. Its community-driven content is one of its greatest strengths, but the mobile experience can sometimes make that content difficult to discover and navigate.',
       'This redesign reimagines the Reddit mobile app with a stronger focus on **usability, visual clarity, and personalization**. Rather than changing Reddit\'s core functionality, the project aims to refine the user experience by reducing interface complexity, improving content discovery, and creating a more engaging profile experience while preserving the platform\'s community-first identity.',
@@ -580,7 +583,7 @@ export const projects: Project[] = [
     description:
       'Individual UI/UX project focused on creating a fully interactive Figma prototype using advanced prototyping techniques.',
     tags: ['Figma', 'Photoshop', 'Canva'],
-    figmaUrl: 'https://figma.com',
+    figmaUrl: 'https://www.figma.com/proto/ST0WcHHTo9lmOlJTD7e8IK/Untitled?node-id=487-2571&t=IuX4SAhZC8L6WqdB-1&scaling=scale-down&content-scaling=fixed&page-id=340%3A4540',
     overview: [
       'SugarCloud Cupcakes is a **branding and UI/UX design project** that reimagines the online bakery experience through a playful, visually engaging, and user-centered e-commerce platform. The goal was to create a **premium yet approachable digital experience** that makes discovering, customizing, and ordering desserts both intuitive and enjoyable.',
       'The project included the development of a **complete digital product** — from brand identity and marketing assets to a fully responsive website prototype. Every element was designed to create a cohesive brand experience while simplifying the customer journey from product discovery to checkout.',

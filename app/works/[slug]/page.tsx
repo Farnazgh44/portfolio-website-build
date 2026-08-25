@@ -169,7 +169,7 @@ export default async function CaseStudyPage({
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-paper/70 px-5 py-2 text-sm font-medium tracking-wide text-paper transition-colors hover:bg-paper hover:text-ink"
           >
-            View in Figma
+            {project.figmaLabel ?? 'View in Figma'}
             <ExternalLink className="size-3.5" strokeWidth={1.75} />
           </a>
         </div>
