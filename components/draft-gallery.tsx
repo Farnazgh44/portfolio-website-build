@@ -32,11 +32,10 @@ function DraftMedia({
   }
 
   return (
-    <Image
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
       src={media}
       alt={`${name} preview`}
-      fill
-      sizes="(min-width: 768px) 800px, 100vw"
       className={className}
     />
   )

@@ -767,7 +767,7 @@ export const draftItems: DraftItem[] = [
       'A 3D lighthouse scene built in Project Neo and refined in Illustrator, blending three-dimensional structure with hand-crafted illustration style.',
     tools: ['Project Neo', 'Illustrator'],
     category: ['3D', 'Illustration'],
-    media: '/lighhouse.png',
+    media: '/Lighhouse.png',
   },
   {
     name: '3D Phone Holder',
