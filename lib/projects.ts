@@ -2,6 +2,8 @@ export type CaseSection = {
   title: string
   /** paragraphs; can include simple text */
   body: string[]
+  /** optional image shown at the end of the section */
+  image?: string
 }
 
 export type Project = {
@@ -59,7 +61,7 @@ export const projects: Project[] = [
     table: {
       tools: 'Figma, Illustrator, Photoshop',
       role: 'UI/UX Designer & UX Researcher',
-      timeline: '2026 — Present',
+      timeline: '10 Weeks',
       industry: 'Structural Engineering',
     },
     sections: [
@@ -449,6 +451,7 @@ export const projects: Project[] = [
           'The messaging interface functions primarily as a conversation tool but lacks personalization and opportunities to discover related communities or continue meaningful engagement.',
           '"How might we redesign Reddit\'s mobile experience to reduce interface complexity, improve content discovery, and encourage stronger user identity without compromising the familiarity and authenticity that make Reddit unique?"',
         ],
+        image: '/Reddit_Before.png',
       },
       {
         title: 'Research',
@@ -467,31 +470,15 @@ export const projects: Project[] = [
           'Beyond reading posts, users expect meaningful ways to participate. Providing clearer content creation, personalized recommendations, and community-focused features encourages ongoing engagement throughout the platform.',
           '**User Persona**',
           'To represent Reddit\'s primary audience, I developed **Jordan Lee**, a 23-year-old university student who uses Reddit daily to stay informed about gaming, technology, and online communities. Jordan values speed, personalization, and intuitive navigation but becomes frustrated when cluttered layouts make information difficult to find.',
-          '**Goals**',
-          '* Stay updated on trending discussions and news.',
-          '* Find answers quickly through trusted communities.',
-          '* Discover new communities aligned with personal interests.',
-          '* Personalize a profile that reflects identity and activity.',
-          '**Pain Points**',
-          '* Cluttered layouts make content difficult to scan.',
-          '* Profiles feel generic and lack personality.',
-          '* Discovering relevant discussions requires excessive searching.',
-          '* Advertisements blend too closely with organic content.',
+          '[image:/Reddit_User Persona.jpg]',
           '**User Scenario**',
-          'Jordan\'s journey begins by checking Reddit after class to catch up on trending discussions. While browsing, they explore recommended content, look for answers to technical questions, personalize their profile, and eventually join a recommended community through the redesigned Chat experience. This scenario helped validate how each redesigned screen supports users throughout a **complete end-to-end experience** rather than as isolated features.',
+          '[image:/Reddit_User Scenario.jpg]',
           '**Empathy Map**',
           'The empathy mapping exercise provided a deeper understanding of Jordan\'s motivations and emotional responses.',
-          '**Thinks** — "I want my profile to represent me." / "I wish discovering content felt easier."',
-          '**Feels** — Overwhelmed by cluttered layouts. Curious when discovering trending discussions. Accomplished when earning achievements or customizing a profile.',
-          '**Says** — "Why is it so hard to tell posts apart?" / "This recommendation actually feels useful."',
-          '**Does** — Browses trending discussions, searches for answers, personalizes their profile, and joins recommended communities.',
+          '[image:/Reddit_Empathy map.jpg]',
           '**Journey Map**',
           'The journey map highlighted opportunities at every stage: improving visibility of trending content on the Home feed, reducing clutter through a card-based layout, introducing guided discovery with Trending Questions and Top Answers, creating richer user profiles, and recommending communities based on user interests.',
-          '**Research Outcome**',
-          'These insights established three core design principles that guided every decision throughout the project:',
-          '* **Clarity** — Reduce visual complexity and improve readability.',
-          '* **Discovery** — Help users find relevant content faster through guided exploration.',
-          '* **Personalization** — Create richer profiles and recommendations that strengthen user identity and community engagement.',
+          '[image:/Reddit_Journey map.jpg]',
         ],
       },
       {
@@ -543,6 +530,7 @@ export const projects: Project[] = [
           '* Community creation tools.',
           '* Reddit Premium call-to-action.',
           '"Together, these improvements transform Reddit into a cleaner, more discoverable, and more personalized mobile experience."',
+          '[image:/Reddit_After2.png]',
         ],
       },
       {
@@ -550,6 +538,7 @@ export const projects: Project[] = [
         body: [
           'The final redesign transforms Reddit into a **cleaner, more intuitive, and engaging mobile experience** while preserving the platform\'s community-first identity. Rather than reinventing the product, the redesign enhances the way users discover content, participate in discussions, and express themselves through thoughtful UX improvements and a more modern visual language.',
           'The redesigned interface introduces stronger visual hierarchy, card-based content organization, and guided discovery features that make browsing feel more **focused and less overwhelming**. Richer user profiles, personalized recommendations, and a more engaging chat experience strengthen users\' sense of identity while encouraging deeper participation within Reddit\'s communities.',
+          '[carousel:/Reddit_Home.png|/Reddit_Answers.png|/Reddit_Create.png|/Reddit_Chat.png|/Reddit_Profile.png]',
           '**Key Features**',
           '* **Improved Readability** — Card-based layouts and clearer visual hierarchy make posts easier to scan and distinguish from advertisements.',
           '* **Enhanced Content Discovery** — Trending Questions, Top Answers, and curated discovery sections help users explore communities without relying solely on search.',

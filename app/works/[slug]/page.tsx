@@ -8,12 +8,15 @@ import { ProjectCard } from '@/components/project-card'
 import { getProject, getOtherProjects, projects } from '@/lib/projects'
 import { ProjectHeroMedia } from '@/components/project-hero-media'
 import { ScrollspySidebar } from '@/components/scrollspy-sidebar'
+import { CaseImageCarousel } from '@/components/case-image-carousel'
 
 /* ── Body renderer ─────────────────────────────────────────────────────────
    Supported string formats (in the body[] array in lib/projects.ts):
-     "quote"       → bold italic pull-quote with rose left border
-     * item        → bullet list item (consecutive * items merge into one <ul>)
-     **bold**      → inline <strong> within any paragraph
+     "quote"         → bold italic pull-quote with rose left border
+     * item          → bullet list item (consecutive * items merge into one <ul>)
+     **bold**        → inline <strong> within any paragraph
+     [image:file]    → full-width image with 30px radius (e.g. [image:/Reddit_Before.png])
+     [carousel:f1|f2|f3] → swipeable image carousel (e.g. [carousel:/a.png|/b.png])
    ────────────────────────────────────────────────────────────────────────── */
 
 function renderInline(raw: string) {
@@ -26,7 +29,7 @@ function renderInline(raw: string) {
 
 function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
   // Group consecutive '* item' strings into ul blocks
-  type Block = { type: 'p' | 'ul'; items: string[] }
+  type Block = { type: 'p' | 'ul' | 'img' | 'carousel'; items: string[] }
   const blocks: Block[] = []
 
   for (const text of paragraphs) {
@@ -37,6 +40,10 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
       } else {
         blocks.push({ type: 'ul', items: [text.slice(2)] })
       }
+    } else if (text.startsWith('[image:') && text.endsWith(']')) {
+      blocks.push({ type: 'img', items: [text.slice(7, -1)] })
+    } else if (text.startsWith('[carousel:') && text.endsWith(']')) {
+      blocks.push({ type: 'carousel', items: text.slice(10, -1).split('|') })
     } else {
       blocks.push({ type: 'p', items: [text] })
     }
@@ -45,6 +52,24 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
   return (
     <>
       {blocks.map((block, i) => {
+        if (block.type === 'carousel') {
+          return <CaseImageCarousel key={i} images={block.items} />
+        }
+
+        if (block.type === 'img') {
+          return (
+            <div key={i} className="my-6 overflow-hidden rounded-[30px] max-w-3xl mx-auto">
+              <Image
+                src={block.items[0]}
+                alt="Case study illustration"
+                width={1200}
+                height={800}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+          )
+        }
+
         if (block.type === 'ul') {
           return (
             <ul key={i} className="list-disc space-y-2 pl-5 text-paper/85">
@@ -250,6 +275,17 @@ export default async function CaseStudyPage({
                   <div className="mt-4 space-y-4 text-base font-light leading-relaxed text-paper/85 md:mt-6 md:text-lg">
                     <BodyRenderer paragraphs={section.body} />
                   </div>
+                  {section.image && (
+                    <div className="mt-8 overflow-hidden rounded-[30px] max-w-3xl mx-auto">
+                      <Image
+                        src={section.image}
+                        alt={`${section.title} illustration`}
+                        width={1200}
+                        height={800}
+                        className="w-full h-auto object-contain"
+                      />
+                    </div>
+                  )}
                 </section>
               )
             })}
