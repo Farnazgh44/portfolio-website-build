@@ -23,7 +23,9 @@ export type Project = {
   shortRoles: string[]
   description: string
   tags: string[]
-  figmaUrl: string
+  /** 'UI/UX' | 'Social Media' — used for Works page filter tabs (defaults to UI/UX if omitted) */
+  filterCategory?: 'UI/UX' | 'Social Media'
+  figmaUrl?: string
   figmaLabel?: string
   overview: string[]
   table: {
@@ -671,6 +673,171 @@ export const projects: Project[] = [
         body: [
           'SugarCloud Cupcakes strengthened my ability to **design beyond individual screens** by combining branding, UX, and interactive prototyping into one cohesive product experience. Throughout the project, I refined my skills in building scalable design systems, creating advanced Figma prototypes with Variables, and balancing visual storytelling with usability.',
           'Most importantly, it reinforced that **successful digital products are more than beautiful interfaces** — they create meaningful, intuitive experiences that connect with users while supporting real business goals.',
+        ],
+      },
+    ],
+  },
+
+  /* ── Social Media ── */
+  {
+    slug: 'breaking-the-feed',
+    name: 'Breaking the Feed',
+    category: 'Social Media & Motion Design',
+    filterCategory: 'Social Media',
+    image: '/CoverCrispup.png',
+    hoverVideo: '/CoverCrispup.mp4',
+    heroVideos: [
+      { label: 'Preview', src: '/Crispupherosection.mp4' },
+    ],
+    roles: 'Social Media Designer & Motion Designer',
+    shortRoles: ['Social Media', 'Motion Design', 'AI-Assisted'],
+    description:
+      'An exploration of AI-assisted motion marketing — where one intentional movement, connected to the brand\'s message, transforms a static post into a scroll-stopping experience.',
+    tags: ['Canva', 'Canva AI', 'ChatGPT'],
+    overview: [
+      'This project began as an exploration of a social media trend I discovered on Instagram, where motion and visual layering were used to make products appear as though they were interacting with the social media interface itself.',
+      'I wanted to explore the concept in my own way and understand how this style could be used to create scroll-stopping marketing content.',
+      'What started with a fictional fast-food brand, **CrispUp**, gradually developed into a broader experiment: Could the same creative approach work for completely different products, brands, and industries?',
+    ],
+    table: {
+      tools: 'Canva, Canva AI, ChatGPT',
+      role: 'Social Media Designer & Motion Designer',
+      timeline: 'Personal Project',
+      industry: 'Social Media & Marketing',
+    },
+    sections: [
+      {
+        title: 'Inspiration & Idea',
+        body: [
+          'The original trend caught my attention because it transformed an ordinary social media post into something more immersive. Instead of keeping the content contained within the post, the subject appeared to break through the interface, creating an unexpected sense of depth and movement.',
+          'Inspired by this idea, I developed my first concept around an exaggerated cheese pull.',
+          'The goal wasn\'t to reproduce the trend exactly, but to understand the visual principle behind it and develop my own approach that could be adapted to different marketing scenarios.',
+        ],
+      },
+      {
+        title: 'Creative Direction',
+        body: [
+          'For the first experiment, I created CrispUp, a fictional fast-food brand, and designed an Instagram-style advertisement where a continuous cheese pull visually passes through the social media interface.',
+          'From there, I explored another food-focused variation: hot ranch sauce pouring onto a crispy nugget.',
+          'Although both concepts promote food, the movement communicates something different:',
+          '* **Cheese pull** → texture, indulgence and anticipation',
+          '* **Sauce pour** → flavor, freshness and appetite appeal',
+          'The motion was intentionally kept simple so that one strong visual action became the focus of each advertisement.',
+        ],
+      },
+      {
+        title: 'Expanding the Concept',
+        body: [
+          'After experimenting with food marketing, I wanted to see whether the same visual approach could work outside the food industry.',
+          'I applied it to **Dogwood Landscaping & Gardening**, this time replacing the food interaction with a leaf blower sending autumn leaves across the social media interface.',
+          'This changed the purpose of the motion completely.',
+          'Instead of highlighting a product, the movement demonstrates a service in action — visually communicating fall cleanup without needing a lengthy explanation.',
+          'That experiment showed me that the concept wasn\'t limited to food or product advertising. The same framework could be adapted around whatever movement best represents a brand.',
+        ],
+      },
+      {
+        title: 'A Flexible Social Media System',
+        body: [
+          'Through these experiments, I realized that the strength of the concept is not one particular effect — it is the relationship between motion, message, and the social media interface.',
+          'For CrispUp, that interaction became a cheese pull and flowing sauce. For Dogwood, it became leaves being blown across the screen.',
+          'The visual language stays consistent while the hero interaction changes according to the brand, product, or service.',
+          'This makes the approach flexible enough to explore across different industries:',
+          '* **Product** → highlight a feature',
+          '* **Food** → emphasize texture and appetite appeal',
+          '* **Service** → demonstrate an action',
+          '* **Brand** → create a memorable visual moment',
+          'Rather than treating motion as decoration, each movement supports the message being communicated.',
+        ],
+      },
+      {
+        title: 'Outcome',
+        body: [
+          'What began as an experiment inspired by a social media trend developed into a repeatable creative approach for short-form marketing content.',
+          'Testing the concept across both CrispUp and Dogwood Landscaping & Gardening demonstrated that the technique can adapt to very different audiences and objectives while still producing visually engaging results.',
+          'The project also allowed me to explore the intersection of branding, social media design, visual storytelling, and AI-assisted motion.',
+          '"The most effective motion doesn\'t need to be complicated — one intentional movement, connected to the brand\'s message, can transform a static post into a more engaging visual experience."',
+          '[video:/CoverCrispup.mp4]',
+        ],
+      },
+    ],
+  },
+
+  {
+    slug: 'one-logo-many-places',
+    name: 'One Logo, Many Places',
+    category: 'Brand Marketing & Social Media',
+    filterCategory: 'Social Media',
+    image: '/CoverReel.png',
+    hoverVideo: '/CoverReel.mp4',
+    heroVideos: [
+      { label: 'Preview', src: '/Reelherossection.mp4' },
+    ],
+    roles: 'Creative Direction, Photography, Social Media Design & Video Editing',
+    shortRoles: ['Brand Awareness', 'Photography', 'Video Editing'],
+    description:
+      'A brand awareness reel for Dogwood Landscaping & Gardening — one logo, sixty environments, one recognizable identity.',
+    tags: ['Photography', 'Canva', 'Video Editing'],
+    overview: [
+      'For Dogwood Landscaping & Gardening, I wanted to create a brand-focused reel that felt different from traditional service advertisements.',
+      'Instead of directly promoting a specific landscaping service, the concept focused on something simpler: making the **Dogwood identity memorable**.',
+      'The result was a fast-paced social media reel built around one consistent element — the Dogwood logo — appearing across a constantly changing series of outdoor environments.',
+    ],
+    table: {
+      tools: 'Photography, Canva, Video Editing',
+      role: 'Creative Direction, Photography, Social Media Design & Video Editing',
+      timeline: 'Personal Project',
+      industry: 'Landscaping & Social Media Marketing',
+    },
+    sections: [
+      {
+        title: 'The Idea',
+        body: [
+          'The concept started with a simple question:',
+          '"How can I make a logo itself interesting enough to become the content?"',
+          'I printed the Dogwood logo and photographed it in approximately **60 different locations, surfaces, textures, and natural environments**.',
+          'Flowers, gravel, pavement, plants, and other outdoor settings continually changed, while the logo remained the visual anchor.',
+          'Rather than telling viewers about the brand, the reel was designed to make them repeatedly see and recognize it.',
+        ],
+      },
+      {
+        title: 'Creative Direction',
+        body: [
+          'Consistency became the most important part of the concept.',
+          'Across every photograph, I kept the logo in approximately the same position and scale, while intentionally changing the environment surrounding it.',
+          'When the images were placed sequentially, this created the illusion that the **logo remained still while the world around it changed**.',
+          'The contrast between the simple black-and-white identity and the variety of natural colors and textures also helped keep the logo recognizable throughout the reel.',
+        ],
+      },
+      {
+        title: 'From Photography to Motion',
+        body: [
+          'After photographing the logo across dozens of environments, I arranged the images into a rapid sequence and synchronized the transitions with music.',
+          'Each photograph appears briefly before immediately changing to the next environment.',
+          'The repetition creates a simple visual rhythm:',
+          '"Same Brand → New Environment → Same Brand → New Environment"',
+          'Instead of relying on complex animation, the movement comes entirely from the transition between real photographs.',
+          'This gives the reel an energetic, handmade quality while keeping the brand consistently at the center of attention.',
+        ],
+      },
+      {
+        title: 'Marketing Strategy',
+        body: [
+          'The purpose of this reel was **brand awareness** rather than direct promotion.',
+          'Landscaping marketing often focuses heavily on before-and-after images or individual services. For this piece, I explored a different approach by making the brand identity itself the subject of the content.',
+          'Repeated exposure to the same logo across changing scenes creates visual consistency while giving viewers something new to look at with every transition.',
+          'The outdoor locations also naturally connect the identity to the environment in which Dogwood operates.',
+          '"One constant. Many environments. One recognizable brand."',
+        ],
+      },
+      {
+        title: 'Outcome',
+        body: [
+          'The final reel transformed approximately **60 individual photographs** into one cohesive piece of short-form branded content.',
+          'What made the experiment successful creatively was the balance between consistency and change: the surroundings continuously shift, while the logo provides a recognizable visual anchor.',
+          'The project demonstrates how a relatively simple idea can become engaging social media content through creative direction, photography, composition, repetition, rhythm, and editing.',
+          'It also reinforced an important idea in my marketing work:',
+          '"Not every advertisement needs to explain a service. Sometimes the goal is simply to make the brand memorable."',
+          '[video:/CoverReel.mp4]',
         ],
       },
     ],

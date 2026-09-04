@@ -1,7 +1,8 @@
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
-import { ProjectCard } from '@/components/project-card'
+import { WorksGrid } from '@/components/works-grid'
 import { projects } from '@/lib/projects'
+import { socialProjects } from '@/lib/social-projects'
 
 export const metadata = {
   title: 'Works — Farnaz Gholami',
@@ -42,17 +43,7 @@ export default function WorksPage() {
 
         {/* Post-hero: continues the front gradient as black -> pink -> black (footer) */}
         <div className="brand-gradient">
-          <section className="px-6 pt-10 md:px-10 md:pt-14 lg:px-16 xl:px-20 2xl:px-32">
-            <div className="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12">
-              {projects.map((project) => (
-                <ProjectCard
-                  key={project.slug}
-                  project={project}
-                  href={`/works/${project.slug}`}
-                />
-              ))}
-            </div>
-          </section>
+          <WorksGrid projects={projects} socialProjects={socialProjects} />
 
           <SiteFooter />
         </div>

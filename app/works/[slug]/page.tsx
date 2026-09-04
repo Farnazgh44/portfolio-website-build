@@ -17,6 +17,7 @@ import { CaseImageCarousel } from '@/components/case-image-carousel'
      **bold**        → inline <strong> within any paragraph
      [image:file]    → full-width image with 30px radius (e.g. [image:/Reddit_Before.png])
      [carousel:f1|f2|f3] → swipeable image carousel (e.g. [carousel:/a.png|/b.png])
+     [video:file]        → autoplaying muted looping video (e.g. [video:/CoverCrispup.mp4])
    ────────────────────────────────────────────────────────────────────────── */
 
 function renderInline(raw: string) {
@@ -29,7 +30,7 @@ function renderInline(raw: string) {
 
 function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
   // Group consecutive '* item' strings into ul blocks
-  type Block = { type: 'p' | 'ul' | 'img' | 'carousel'; items: string[] }
+  type Block = { type: 'p' | 'ul' | 'img' | 'carousel' | 'video'; items: string[] }
   const blocks: Block[] = []
 
   for (const text of paragraphs) {
@@ -44,6 +45,8 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
       blocks.push({ type: 'img', items: [text.slice(7, -1)] })
     } else if (text.startsWith('[carousel:') && text.endsWith(']')) {
       blocks.push({ type: 'carousel', items: text.slice(10, -1).split('|') })
+    } else if (text.startsWith('[video:') && text.endsWith(']')) {
+      blocks.push({ type: 'video', items: [text.slice(7, -1)] })
     } else {
       blocks.push({ type: 'p', items: [text] })
     }
@@ -54,6 +57,21 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
       {blocks.map((block, i) => {
         if (block.type === 'carousel') {
           return <CaseImageCarousel key={i} images={block.items} />
+        }
+
+        if (block.type === 'video') {
+          return (
+            <div key={i} className="my-6 overflow-hidden rounded-[30px] max-w-3xl mx-auto">
+              <video
+                src={block.items[0]}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-auto"
+              />
+            </div>
+          )
         }
 
         if (block.type === 'img') {
@@ -186,18 +204,20 @@ export default async function CaseStudyPage({
       {/* ── Post-hero content ── */}
       <div className="px-6 md:px-10 lg:px-16 xl:px-20 2xl:px-32">
 
-        {/* Figma button */}
-        <div className="flex justify-start md:justify-end pt-8 md:pt-10">
-          <a
-            href={project.figmaUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-paper/70 px-5 py-2 text-sm font-medium tracking-wide text-paper transition-colors hover:bg-paper hover:text-ink"
-          >
-            {project.figmaLabel ?? 'View in Figma'}
-            <ExternalLink className="size-3.5" strokeWidth={1.75} />
-          </a>
-        </div>
+        {/* Figma / external link button — hidden when no URL */}
+        {project.figmaUrl && (
+          <div className="flex justify-start md:justify-end pt-8 md:pt-10">
+            <a
+              href={project.figmaUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-paper/70 px-5 py-2 text-sm font-medium tracking-wide text-paper transition-colors hover:bg-paper hover:text-ink"
+            >
+              {project.figmaLabel ?? 'View in Figma'}
+              <ExternalLink className="size-3.5" strokeWidth={1.75} />
+            </a>
+          </div>
+        )}
 
         {/* Tags + description */}
         <section className="pt-8 md:pt-10">
