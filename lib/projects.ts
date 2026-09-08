@@ -723,6 +723,7 @@ export const projects: Project[] = [
           '* **Cheese pull** → texture, indulgence and anticipation',
           '* **Sauce pour** → flavor, freshness and appetite appeal',
           'The motion was intentionally kept simple so that one strong visual action became the focus of each advertisement.',
+          '[sidebyside:/LittleCheesePull.png|/Sauce.png]',
         ],
       },
       {
@@ -733,6 +734,7 @@ export const projects: Project[] = [
           'This changed the purpose of the motion completely.',
           'Instead of highlighting a product, the movement demonstrates a service in action — visually communicating fall cleanup without needing a lengthy explanation.',
           'That experiment showed me that the concept wasn\'t limited to food or product advertising. The same framework could be adapted around whatever movement best represents a brand.',
+          '[smallimage:/Landscaping.png]',
         ],
       },
       {
@@ -747,6 +749,7 @@ export const projects: Project[] = [
           '* **Service** → demonstrate an action',
           '* **Brand** → create a memorable visual moment',
           'Rather than treating motion as decoration, each movement supports the message being communicated.',
+          '[threecol:/CrispupCheesepull.png|/Crispupsauce.png|/LandPost.png]',
         ],
       },
       {

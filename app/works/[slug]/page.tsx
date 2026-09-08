@@ -18,6 +18,9 @@ import { CaseImageCarousel } from '@/components/case-image-carousel'
      [image:file]    → full-width image with 30px radius (e.g. [image:/Reddit_Before.png])
      [carousel:f1|f2|f3] → swipeable image carousel (e.g. [carousel:/a.png|/b.png])
      [video:file]        → autoplaying muted looping video (e.g. [video:/CoverCrispup.mp4])
+     [sidebyside:f1|f2]  → two small images side by side (e.g. [sidebyside:/a.png|/b.png])
+     [smallimage:file]   → single small image matching sidebyside size (e.g. [smallimage:/a.png])
+     [threecol:f1|f2|f3] → three images side by side (e.g. [threecol:/a.png|/b.png|/c.png])
    ────────────────────────────────────────────────────────────────────────── */
 
 function renderInline(raw: string) {
@@ -30,7 +33,7 @@ function renderInline(raw: string) {
 
 function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
   // Group consecutive '* item' strings into ul blocks
-  type Block = { type: 'p' | 'ul' | 'img' | 'carousel' | 'video'; items: string[] }
+  type Block = { type: 'p' | 'ul' | 'img' | 'carousel' | 'video' | 'sidebyside' | 'smallimage' | 'threecol'; items: string[] }
   const blocks: Block[] = []
 
   for (const text of paragraphs) {
@@ -47,6 +50,12 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
       blocks.push({ type: 'carousel', items: text.slice(10, -1).split('|') })
     } else if (text.startsWith('[video:') && text.endsWith(']')) {
       blocks.push({ type: 'video', items: [text.slice(7, -1)] })
+    } else if (text.startsWith('[sidebyside:') && text.endsWith(']')) {
+      blocks.push({ type: 'sidebyside', items: text.slice(12, -1).split('|') })
+    } else if (text.startsWith('[smallimage:') && text.endsWith(']')) {
+      blocks.push({ type: 'smallimage', items: [text.slice(12, -1)] })
+    } else if (text.startsWith('[threecol:') && text.endsWith(']')) {
+      blocks.push({ type: 'threecol', items: text.slice(10, -1).split('|') })
     } else {
       blocks.push({ type: 'p', items: [text] })
     }
@@ -57,6 +66,56 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
       {blocks.map((block, i) => {
         if (block.type === 'carousel') {
           return <CaseImageCarousel key={i} images={block.items} />
+        }
+
+        if (block.type === 'threecol') {
+          return (
+            <div key={i} className="my-6 grid grid-cols-3 gap-4 max-w-[880px] mx-auto">
+              {block.items.map((src, j) => (
+                <div key={j} className="overflow-hidden rounded-[30px]">
+                  <Image
+                    src={src}
+                    alt={`Image ${j + 1} of 3`}
+                    width={600}
+                    height={600}
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        if (block.type === 'smallimage') {
+          return (
+            <div key={i} className="my-6 w-full max-w-[280px] mx-auto overflow-hidden rounded-[30px]">
+              <Image
+                src={block.items[0]}
+                alt="Case study illustration"
+                width={600}
+                height={600}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+          )
+        }
+
+        if (block.type === 'sidebyside') {
+          return (
+            <div key={i} className="my-6 grid grid-cols-2 gap-4 max-w-xl mx-auto">
+              {block.items.map((src, j) => (
+                <div key={j} className="overflow-hidden rounded-[30px]">
+                  <Image
+                    src={src}
+                    alt={`Side by side image ${j + 1}`}
+                    width={600}
+                    height={600}
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          )
         }
 
         if (block.type === 'video') {
