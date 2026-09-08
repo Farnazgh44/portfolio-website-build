@@ -88,14 +88,16 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
 
         if (block.type === 'smallimage') {
           return (
-            <div key={i} className="my-6 w-full max-w-[280px] mx-auto overflow-hidden rounded-[30px]">
-              <Image
-                src={block.items[0]}
-                alt="Case study illustration"
-                width={600}
-                height={600}
-                className="w-full h-auto object-contain"
-              />
+            <div key={i} className="my-6 flex justify-center">
+              <div className="w-2/5 overflow-hidden rounded-[30px]">
+                <Image
+                  src={block.items[0]}
+                  alt="Case study illustration"
+                  width={600}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
             </div>
           )
         }
