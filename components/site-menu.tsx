@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { X } from 'lucide-react'
 import { Logo } from '@/components/logo'
-import { CONTACT, MENU_OPEN_EVENT } from '@/lib/site'
+import { ContactModal } from '@/components/contact-modal'
+import { MENU_OPEN_EVENT } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 export function SiteMenu() {
@@ -30,6 +31,7 @@ export function SiteMenu() {
   }
 
   return (
+    <>
     <div
       className={cn(
         'fixed inset-0 z-50 bg-ink transition-opacity duration-300',
@@ -58,7 +60,7 @@ export function SiteMenu() {
             onClick={close}
             className="text-lg font-light tracking-wide text-paper/85 transition-colors hover:text-paper"
           >
-            Works
+            Projects
           </Link>
           <Link
             href="/about"
@@ -68,51 +70,20 @@ export function SiteMenu() {
             About
           </Link>
 
-          <div className="flex flex-col items-center gap-3">
-            <button
-              type="button"
-              onClick={() => setContactOpen((v) => !v)}
-              aria-expanded={contactOpen}
-              className={cn(
-                'text-lg tracking-wide transition-colors hover:text-paper',
-                contactOpen
-                  ? 'font-semibold text-paper'
-                  : 'font-light text-paper/85',
-              )}
-            >
-              Contact
-            </button>
-            <div
-              className={cn(
-                'flex flex-col items-center gap-2 overflow-hidden transition-all duration-300',
-                contactOpen ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0',
-              )}
-            >
-              <a
-                href={CONTACT.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                onClick={close}
-                className="text-sm font-light tracking-wide text-paper/70 transition-colors hover:text-paper"
-              >
-                LinkedIn
-              </a>
-              <a
-                href={CONTACT.mailto}
-                onClick={close}
-                className="text-sm font-light tracking-wide text-paper/70 transition-colors hover:text-paper"
-              >
-                Email
-              </a>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={() => setContactOpen(true)}
+            className="text-lg font-light tracking-wide text-paper/85 transition-colors hover:text-paper"
+          >
+            Contact
+          </button>
 
           <Link
             href="/draft"
             onClick={close}
             className="text-lg font-light tracking-wide text-paper/85 transition-colors hover:text-paper"
           >
-            Draft
+            Sketchbook
           </Link>
           <a
             href="/Resume.pdf"
@@ -126,5 +97,11 @@ export function SiteMenu() {
         </nav>
       </div>
     </div>
+
+    <ContactModal
+      open={contactOpen}
+      onClose={() => setContactOpen(false)}
+    />
+    </>
   )
 }

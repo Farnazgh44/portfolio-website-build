@@ -6,18 +6,18 @@ export const CONTACT = {
 }
 
 export const NAV_LINKS = [
-  { label: 'Works', href: '/works' },
+  { label: 'Projects', href: '/works' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '#contact' },
-  { label: 'Draft', href: '/draft' },
+  { label: 'Sketchbook', href: '/draft' },
   { label: 'Resume', href: '/Resume.pdf' },
 ]
 
 // Inline horizontal nav used on desktop (order follows the desktop wireframes).
 export const DESKTOP_NAV = [
   { label: 'About', href: '/about' },
-  { label: 'Works', href: '/works' },
-  { label: 'Draft', href: '/draft' },
+  { label: 'Projects', href: '/works' },
+  { label: 'Sketchbook', href: '/draft' },
   { label: 'Resume', href: '/Resume.pdf' },
   { label: 'Contact', href: '/#contact' },
 ]

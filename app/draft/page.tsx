@@ -34,7 +34,7 @@ export default function DraftPage() {
         {/* "Draft" heading overlaid at bottom-left */}
         {/* ── MOBILE: pb-6 = distance from bottom. DESKTOP: md:pb-68 — do not edit ── */}
         <div className="absolute inset-x-0 bottom-0 px-6 pb-6 md:px-10 md:pb-68 lg:px-16 xl:px-20 2xl:px-32">
-          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-paper md:text-7xl lg:text-8xl">Draft</h1>
+          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-paper md:text-7xl lg:text-8xl">Sketchbook</h1>
         </div>
       </section>
 

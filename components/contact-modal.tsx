@@ -34,7 +34,7 @@ export function ContactModal({ open, onClose }: { open: boolean; onClose: () => 
     >
       {/* Card */}
       <div
-        className="relative w-full max-w-2xl rounded-2xl bg-white p-8 shadow-2xl"
+        className="relative w-full max-w-2xl rounded-2xl bg-white p-5 shadow-2xl md:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -73,7 +73,7 @@ export function ContactModal({ open, onClose }: { open: boolean; onClose: () => 
             <div>
               <label className="text-sm font-medium text-ink">Message</label>
               <textarea
-                rows={4}
+                rows={3}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className="mt-1.5 w-full resize-none rounded-lg border border-ink/15 px-3 py-2.5 text-sm text-ink outline-none transition focus:border-ink/40 focus:ring-2 focus:ring-ink/10"
@@ -90,7 +90,7 @@ export function ContactModal({ open, onClose }: { open: boolean; onClose: () => 
           </form>
 
           {/* ── Right: links + status ── */}
-          <div className="flex flex-col rounded-xl border border-ink/10 bg-ink/[0.03] px-4 py-3">
+          <div className="flex flex-col rounded-xl border border-ink/10 bg-ink/[0.03] px-4 py-2 md:py-3">
 
             {/* Email */}
             <a
@@ -124,24 +124,25 @@ export function ContactModal({ open, onClose }: { open: boolean; onClose: () => 
               </div>
             </a>
 
-            <div className="h-px bg-ink/8" />
+            {/* Resume — desktop only */}
+            <div className="hidden md:block">
+              <div className="h-px bg-ink/8" />
+              <a
+                href={CONTACT.resume}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-start gap-3 py-3 transition-opacity hover:opacity-70"
+              >
+                <FileText className="mt-0.5 size-4 shrink-0 text-ink" strokeWidth={1.75} />
+                <div>
+                  <p className="text-sm font-medium text-ink">Resume</p>
+                  <p className="mt-0.5 text-[11px] font-light text-ink/55">Download CV</p>
+                </div>
+              </a>
+            </div>
 
-            {/* Resume */}
-            <a
-              href={CONTACT.resume}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-start gap-3 py-3 transition-opacity hover:opacity-70"
-            >
-              <FileText className="mt-0.5 size-4 shrink-0 text-ink" strokeWidth={1.75} />
-              <div>
-                <p className="text-sm font-medium text-ink">Resume</p>
-                <p className="mt-0.5 text-[11px] font-light text-ink/55">Download CV</p>
-              </div>
-            </a>
-
-            {/* Status + Location */}
-            <div className="mt-auto border-t border-ink/10 pt-3">
+            {/* Status + Location — desktop only */}
+            <div className="hidden md:block mt-auto border-t border-ink/10 pt-3">
               <div className="flex items-center gap-2 py-1">
                 <span className="size-2 shrink-0 rounded-full bg-green-500" />
                 <p className="text-[11px] text-ink/65">Open For Projects</p>
