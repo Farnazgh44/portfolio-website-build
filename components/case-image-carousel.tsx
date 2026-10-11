@@ -49,7 +49,7 @@ export function CaseImageCarousel({ images }: { images: string[] }) {
             alt={`Slide ${index + 1} of ${images.length}`}
             width={1200}
             height={800}
-            className="w-full h-auto object-contain"
+            className="w-full h-auto max-h-[55vh] object-contain mx-auto"
           />
         </div>
 

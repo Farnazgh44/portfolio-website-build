@@ -9,6 +9,7 @@ import { getProject, getOtherProjects, projects } from '@/lib/projects'
 import { ProjectHeroMedia } from '@/components/project-hero-media'
 import { ScrollspySidebar } from '@/components/scrollspy-sidebar'
 import { CaseImageCarousel } from '@/components/case-image-carousel'
+import { ClickableImage } from '@/components/clickable-image'
 
 /* ── Body renderer ─────────────────────────────────────────────────────────
    Supported string formats (in the body[] array in lib/projects.ts):
@@ -33,7 +34,7 @@ function renderInline(raw: string) {
 
 function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
   // Group consecutive '* item' strings into ul blocks
-  type Block = { type: 'p' | 'ul' | 'img' | 'carousel' | 'video' | 'sidebyside' | 'smallimage' | 'threecol'; items: string[] }
+  type Block = { type: 'p' | 'ul' | 'img' | 'carousel' | 'video' | 'sidebyside' | 'beforeafter' | 'cardreveal' | 'smallimage' | 'threecol' | 'websitelink'; items: string[] }
   const blocks: Block[] = []
 
   for (const text of paragraphs) {
@@ -50,6 +51,12 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
       blocks.push({ type: 'carousel', items: text.slice(10, -1).split('|') })
     } else if (text.startsWith('[video:') && text.endsWith(']')) {
       blocks.push({ type: 'video', items: [text.slice(7, -1)] })
+    } else if (text.startsWith('[websitelink:') && text.endsWith(']')) {
+      blocks.push({ type: 'websitelink', items: text.slice(13, -1).split('|') })
+    } else if (text.startsWith('[cardreveal:') && text.endsWith(']')) {
+      blocks.push({ type: 'cardreveal', items: text.slice(12, -1).split('|') })
+    } else if (text.startsWith('[beforeafter:') && text.endsWith(']')) {
+      blocks.push({ type: 'beforeafter', items: text.slice(13, -1).split('|') })
     } else if (text.startsWith('[sidebyside:') && text.endsWith(']')) {
       blocks.push({ type: 'sidebyside', items: text.slice(12, -1).split('|') })
     } else if (text.startsWith('[smallimage:') && text.endsWith(']')) {
@@ -116,6 +123,97 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
                   />
                 </div>
               ))}
+            </div>
+          )
+        }
+
+        if (block.type === 'beforeafter') {
+          const labels = ['Before', 'After']
+          return (
+            <div key={i} className="my-6 max-w-xl mx-auto">
+              <div className="grid grid-cols-2 gap-4">
+                {block.items.map((src, j) => (
+                  <div key={j} className="overflow-hidden rounded-[30px] aspect-square">
+                    <ClickableImage
+                      src={src}
+                      alt={labels[j] ?? `Image ${j + 1}`}
+                      width={600}
+                      height={600}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="grid grid-cols-2 gap-4 mt-2">
+                {block.items.map((_, j) => (
+                  <p key={j} className="text-center text-xs font-medium text-paper/40 uppercase tracking-widest">
+                    {labels[j]}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        if (block.type === 'websitelink') {
+          const [url, label] = block.items
+          return (
+            <div key={i} className="my-8 flex justify-start">
+              <a
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-paper/70 px-5 py-2 text-sm font-medium tracking-wide text-paper transition-colors hover:bg-paper hover:text-ink"
+              >
+                {label ?? 'View the Website'}
+                <ExternalLink className="size-3.5" strokeWidth={1.75} />
+              </a>
+            </div>
+          )
+        }
+
+        if (block.type === 'cardreveal') {
+          // items: [oldCard, newFront, newBack]
+          const [oldSrc, frontSrc, backSrc] = block.items
+          return (
+            <div key={i} className="my-6 max-w-2xl mx-auto">
+              <div className="grid grid-cols-2 gap-4 items-stretch">
+                {/* Before — single old card */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex-1 overflow-hidden rounded-[30px]">
+                    <ClickableImage
+                      src={oldSrc}
+                      alt="Business card — Before"
+                      width={800}
+                      height={500}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <p className="text-center text-xs font-medium text-paper/40 uppercase tracking-widest">Before</p>
+                </div>
+                {/* After — front + back stacked */}
+                <div className="flex flex-col gap-2">
+                  <div className="overflow-hidden rounded-[30px]">
+                    <ClickableImage
+                      src={frontSrc}
+                      alt="Business card — After (Front)"
+                      width={800}
+                      height={500}
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
+                  <div className="overflow-hidden rounded-[30px]">
+                    <ClickableImage
+                      src={backSrc}
+                      alt="Business card — After (Back)"
+                      width={800}
+                      height={500}
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
+                  <p className="text-center text-xs font-medium text-paper/40 uppercase tracking-widest">After — Front &amp; Back</p>
+                </div>
+              </div>
             </div>
           )
         }
