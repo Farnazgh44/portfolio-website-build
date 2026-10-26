@@ -855,6 +855,97 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: 'beyond-the-flyer',
+    name: 'Beyond the Flyer',
+    category: 'Creative Print Marketing · Brand Activation · Graphic Design',
+    filterCategory: 'Social Media',
+    image: '/PosterprojectcoverOG.png',
+    hoverVideo: '/Coverposter.mp4',
+    heroVideos: [
+      { label: 'Preview', src: '/Posterherosection.mp4' },
+    ],
+    roles: 'Creative Direction, Graphic Design & Print Marketing',
+    shortRoles: ['Graphic Design', 'Print Marketing', 'Brand Awareness'],
+    description:
+      'A nature-inspired, foldable alternative to the traditional flyer for Dogwood Landscaping & Gardening — turning an ordinary advertisement into something people want to notice, pick up, and explore.',
+    tags: ['Canva', 'Printer'],
+    overview: [
+      'For Dogwood Landscaping & Gardening, I explored a creative alternative to traditional promotional flyers. Rather than relying on conventional rectangular layouts, I wanted to design marketing materials that would naturally capture attention while reflecting the company\'s identity and services.',
+      'The concept evolved into a series of nature-inspired, foldable promotional pieces, beginning with a Dogwood flower and later expanding into autumn leaves to promote seasonal landscaping services.',
+      'The objective was simple: **Turn an ordinary advertisement into something people would want to notice, pick up, and explore.**',
+      '[equalrow:1/1|/Canvaflower.png|/Canvaleaf.png]',
+    ],
+    table: {
+      tools: 'Canva, Printer',
+      role: 'Creative Direction, Graphic Design & Print Marketing',
+      timeline: '4 hours',
+      industry: 'Landscaping & Gardening / Home Services',
+    },
+    sections: [
+      {
+        title: 'Inspiration & Concept',
+        body: [
+          '**Making the Advertisement Part of the Brand**',
+          'The initial inspiration came directly from the company\'s name: **Dogwood**.',
+          'Instead of placing a flower illustration on a standard flyer, I explored the idea of making the promotional material itself resemble a Dogwood flower.',
+          'The design combined decorative petals with a central foldable information panel featuring the company logo, services, contact information, and a QR code linking to the website.',
+          'This created a balance between visual appeal and practical communication, allowing the design to function as both an eye-catching promotional piece and an accessible source of business information.',
+        ],
+      },
+      {
+        title: 'Creative Direction',
+        body: [
+          '**From Brand Identity to Seasonal Storytelling**',
+          '**Concept 01 — Dogwood Flower**',
+          'The first design used the Dogwood flower as its visual foundation, connecting the printed advertisement directly to the company\'s name and nature-focused identity.',
+          'The floral silhouette created a distinctive alternative to a traditional flyer.',
+          '[equalrow:3/4|/flowerclose.jpg|/floweropen.jpg]',
+          '**Concept 02 — Autumn Leaves**',
+          'The second design adapted the same approach to promote fall services, including leaf and yard cleanup, gutter cleaning, and pressure washing.',
+          'Autumn leaf shapes and seasonal colors made the promotion more relevant to the time of year and the services being advertised.',
+          '[equalrow:3/4|/leafclose.jpg|/leafopen.jpg]',
+          '"Both designs followed the same principle: Use a recognizable element of nature to communicate the brand\'s message before the audience even reads the text."',
+        ],
+      },
+      {
+        title: 'Design & Brand Integration',
+        body: [
+          '**Where Creativity Meets Functionality**',
+          'While the unconventional shapes were intended to attract attention, the printed materials still needed to communicate essential information clearly.',
+          'I incorporated the company logo, service descriptions, contact details, and a scannable website QR code into a compact, foldable layout.',
+          'The design also considered how the materials would appear in real-world environments, such as among flowers and foliage or when placed in appropriate locations for distribution.',
+          'The combination of physical form, brand identity, and accessible information helped create promotional materials that felt more intentional than a standard advertisement.',
+        ],
+      },
+      {
+        title: 'Marketing Strategy',
+        body: [
+          '**Creating Curiosity Through Physical Interaction**',
+          'Traditional flyers often compete for attention through large headlines, promotional offers, or bold colors. For this project, I explored a different strategy: using an unexpected shape to encourage curiosity.',
+          'The flower and leaf designs were intended to stand out in everyday environments, prompting potential customers to look more closely and unfold the material to discover its contents.',
+          'The two concepts supported different marketing objectives:',
+          '* **Dogwood Flower:** Establish brand recognition through a visual connection to the company\'s name.',
+          '* **Autumn Leaf:** Promote timely seasonal services through recognizable fall imagery.',
+          'Both approaches aimed to make the advertising feel relevant to the business while encouraging interaction beyond a quick glance.',
+          '[equalrow:3/4|/Windshielwiper.jpg|/door.jpg|/Bench.jpg]',
+        ],
+      },
+      {
+        title: 'Outcome',
+        body: [
+          '**One Concept, Two Marketing Applications**',
+          'The project resulted in two distinctive print marketing concepts that transformed traditional service advertisements into creative, nature-inspired promotional pieces.',
+          'By adapting the design from a Dogwood flower to autumn leaves, I demonstrated how a single creative approach could support both brand awareness and seasonal marketing campaigns.',
+          'The project highlights my ability to combine graphic design, brand storytelling, print layout, and marketing strategy to create materials that communicate information while offering a memorable visual experience.',
+          '**Key Takeaway**',
+          '"Effective marketing doesn\'t always require more information or a bigger advertisement. Sometimes, changing how a message is presented can make the entire experience more interesting."',
+          'The project produced tangible promotional designs; their impact on customer engagement or inquiries has not yet been measured.',
+          '[video:/Coverposter.mp4]',
+        ],
+      },
+    ],
+  },
 ]
 
 export function getProject(slug: string) {

@@ -22,6 +22,7 @@ import { ClickableImage } from '@/components/clickable-image'
      [sidebyside:f1|f2]  → two small images side by side (e.g. [sidebyside:/a.png|/b.png])
      [smallimage:file]   → single small image matching sidebyside size (e.g. [smallimage:/a.png])
      [threecol:f1|f2|f3] → three images side by side (e.g. [threecol:/a.png|/b.png|/c.png])
+     [equalrow:ratio|f1|f2...] → images in one row, cropped to the same size and shape (e.g. [equalrow:3/4|/a.jpg|/b.jpg])
    ────────────────────────────────────────────────────────────────────────── */
 
 function renderInline(raw: string) {
@@ -34,7 +35,7 @@ function renderInline(raw: string) {
 
 function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
   // Group consecutive '* item' strings into ul blocks
-  type Block = { type: 'p' | 'ul' | 'img' | 'carousel' | 'video' | 'sidebyside' | 'beforeafter' | 'cardreveal' | 'smallimage' | 'threecol' | 'websitelink'; items: string[] }
+  type Block = { type: 'p' | 'ul' | 'img' | 'carousel' | 'video' | 'sidebyside' | 'beforeafter' | 'cardreveal' | 'smallimage' | 'threecol' | 'equalrow' | 'websitelink'; items: string[] }
   const blocks: Block[] = []
 
   for (const text of paragraphs) {
@@ -61,6 +62,8 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
       blocks.push({ type: 'sidebyside', items: text.slice(12, -1).split('|') })
     } else if (text.startsWith('[smallimage:') && text.endsWith(']')) {
       blocks.push({ type: 'smallimage', items: [text.slice(12, -1)] })
+    } else if (text.startsWith('[equalrow:') && text.endsWith(']')) {
+      blocks.push({ type: 'equalrow', items: text.slice(10, -1).split('|') })
     } else if (text.startsWith('[threecol:') && text.endsWith(']')) {
       blocks.push({ type: 'threecol', items: text.slice(10, -1).split('|') })
     } else {
@@ -80,7 +83,7 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
             <div key={i} className="my-6 grid grid-cols-3 gap-4 max-w-[880px] mx-auto">
               {block.items.map((src, j) => (
                 <div key={j} className="overflow-hidden rounded-[30px]">
-                  <Image
+                  <ClickableImage
                     src={src}
                     alt={`Image ${j + 1} of 3`}
                     width={600}
@@ -93,11 +96,34 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
           )
         }
 
+        if (block.type === 'equalrow') {
+          const [ratio, ...srcs] = block.items
+          return (
+            <div
+              key={i}
+              className={`my-6 grid gap-4 mx-auto ${srcs.length > 2 ? 'max-w-[880px]' : 'max-w-xl'}`}
+              style={{ gridTemplateColumns: `repeat(${srcs.length}, minmax(0, 1fr))` }}
+            >
+              {srcs.map((src, j) => (
+                <div key={j} className="overflow-hidden rounded-xl" style={{ aspectRatio: ratio }}>
+                  <ClickableImage
+                    src={src}
+                    alt={`Image ${j + 1} of ${srcs.length}`}
+                    width={800}
+                    height={800}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          )
+        }
+
         if (block.type === 'smallimage') {
           return (
             <div key={i} className="my-6 flex justify-center">
               <div className="w-[45%] overflow-hidden rounded-[30px]">
-                <Image
+                <ClickableImage
                   src={block.items[0]}
                   alt="Case study illustration"
                   width={600}
@@ -114,7 +140,7 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
             <div key={i} className="my-6 grid grid-cols-2 gap-4 max-w-xl mx-auto">
               {block.items.map((src, j) => (
                 <div key={j} className="overflow-hidden rounded-[30px]">
-                  <Image
+                  <ClickableImage
                     src={src}
                     alt={`Side by side image ${j + 1}`}
                     width={600}
