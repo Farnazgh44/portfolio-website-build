@@ -10,6 +10,7 @@ import { ProjectHeroMedia } from '@/components/project-hero-media'
 import { ScrollspySidebar } from '@/components/scrollspy-sidebar'
 import { CaseImageCarousel } from '@/components/case-image-carousel'
 import { ClickableImage } from '@/components/clickable-image'
+import { blurProps } from '@/lib/image-blur'
 
 /* ── Body renderer ─────────────────────────────────────────────────────────
    Supported string formats (in the body[] array in lib/projects.ts):
@@ -86,6 +87,7 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
                   <ClickableImage
                     src={src}
                     alt={`Image ${j + 1} of 3`}
+                    sizes="(min-width: 880px) 300px, 34vw"
                     width={600}
                     height={600}
                     className="w-full h-auto object-contain"
@@ -126,6 +128,7 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
                 <ClickableImage
                   src={block.items[0]}
                   alt="Case study illustration"
+                  sizes="(min-width: 768px) 400px, 45vw"
                   width={600}
                   height={600}
                   className="w-full h-auto object-contain"
@@ -143,6 +146,7 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
                   <ClickableImage
                     src={src}
                     alt={`Side by side image ${j + 1}`}
+                    sizes="(min-width: 640px) 300px, 50vw"
                     width={600}
                     height={600}
                     className="w-full h-auto object-contain"
@@ -163,6 +167,7 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
                     <ClickableImage
                       src={src}
                       alt={labels[j] ?? `Image ${j + 1}`}
+                      sizes="(min-width: 640px) 300px, 50vw"
                       width={600}
                       height={600}
                       className="w-full h-full object-contain"
@@ -210,6 +215,7 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
                     <ClickableImage
                       src={oldSrc}
                       alt="Business card — Before"
+                      sizes="(min-width: 672px) 340px, 50vw"
                       width={800}
                       height={500}
                       className="w-full h-full object-contain"
@@ -223,6 +229,7 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
                     <ClickableImage
                       src={frontSrc}
                       alt="Business card — After (Front)"
+                      sizes="(min-width: 672px) 340px, 50vw"
                       width={800}
                       height={500}
                       className="w-full h-auto object-contain"
@@ -232,6 +239,7 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
                     <ClickableImage
                       src={backSrc}
                       alt="Business card — After (Back)"
+                      sizes="(min-width: 672px) 340px, 50vw"
                       width={800}
                       height={500}
                       className="w-full h-auto object-contain"
@@ -267,6 +275,8 @@ function BodyRenderer({ paragraphs }: { paragraphs: string[] }) {
                 alt="Case study illustration"
                 width={1200}
                 height={800}
+                sizes="(min-width: 768px) 768px, 100vw"
+                {...blurProps(block.items[0])}
                 className="w-full h-auto object-contain"
               />
             </div>
@@ -370,6 +380,7 @@ export default async function CaseStudyPage({
             fill
             priority
             sizes="100vw"
+            {...blurProps(project.image)}
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/40 to-ink" />
@@ -487,6 +498,8 @@ export default async function CaseStudyPage({
                         alt={`${section.title} illustration`}
                         width={1200}
                         height={800}
+                        sizes="(min-width: 768px) 768px, 100vw"
+                        {...blurProps(section.image)}
                         className="w-full h-auto object-contain"
                       />
                     </div>

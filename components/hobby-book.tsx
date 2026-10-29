@@ -94,6 +94,7 @@ function CardHalf({ hobby, side, onOpen }: { hobby: Hobby; side: 'left' | 'right
             src={photo}
             alt={hobby.label}
             fill
+            sizes="(min-width: 768px) 400px, 100vw"
             className={cn('object-cover', onOpen && 'cursor-zoom-in')}
             onClick={() => onOpen?.(photo)}
           />
@@ -216,6 +217,7 @@ function MobileHobbyView({
                   src={(h.leftPhoto ?? h.rightPhoto)!}
                   alt={h.label}
                   fill
+                  sizes="100vw"
                   className="cursor-zoom-in object-cover"
                   onClick={() => onOpen((h.leftPhoto ?? h.rightPhoto)!)}
                 />

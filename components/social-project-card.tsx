@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react'
 import Image from 'next/image'
 import type { SocialCard } from '@/lib/social-projects'
+import { blurProps } from '@/lib/image-blur'
 
 export function SocialProjectCard({ card }: { card: SocialCard }) {
   const [hovered, setHovered] = useState(false)
@@ -33,7 +34,8 @@ export function SocialProjectCard({ card }: { card: SocialCard }) {
           src={card.image}
           alt={`${card.name} preview`}
           fill
-          sizes="(min-width: 768px) 560px, 100vw"
+          {...blurProps(card.image)}
+          sizes="(min-width: 768px) 50vw, 100vw"
           className={`object-contain p-2 transition-opacity duration-500 ${
             hovered && card.hoverVideo ? 'opacity-0' : 'opacity-100'
           }`}

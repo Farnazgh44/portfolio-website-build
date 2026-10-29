@@ -50,10 +50,11 @@ export function WorksGrid({
       {/* Cards grid */}
       <div className="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12">
         {showUIUX &&
-          uiuxProjects.map((project) => (
+          uiuxProjects.map((project, i) => (
             <ProjectCard
               key={project.slug}
               project={project}
+              priority={i < 2}
               href={`/works/${project.slug}`}
             />
           ))}

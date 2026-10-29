@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { blurProps } from '@/lib/image-blur'
 import { Mail } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
@@ -99,6 +100,7 @@ export default function AboutPage() {
             fill
             priority
             sizes="100vw"
+            {...blurProps('/BG.png')}
             className="object-cover object-[50%_60%]"
           />
 
@@ -109,6 +111,7 @@ export default function AboutPage() {
             src="/No BG.png"
             alt="Portrait of Farnaz Gholami"
             fill
+            loading="eager"
             sizes="100vw"
             className="object-contain object-[80%_100%] -translate-y-[20%] md:translate-y-0"
           />

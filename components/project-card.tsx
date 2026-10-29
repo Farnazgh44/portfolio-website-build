@@ -4,13 +4,16 @@ import { useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Project } from '@/lib/projects'
+import { blurProps } from '@/lib/image-blur'
 
 export function ProjectCard({
   project,
   href,
+  priority = false,
 }: {
   project: Project
   href: string
+  priority?: boolean
 }) {
   const [hovered, setHovered] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -41,7 +44,10 @@ export function ProjectCard({
           src={project.image || '/placeholder.svg'}
           alt={`${project.name} ${project.suffix ?? ''} preview`}
           fill
-          sizes="(min-width: 768px) 560px, 100vw"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : 'auto'}
+          {...blurProps(project.image)}
+          sizes="(min-width: 768px) 50vw, 100vw"
           className={`object-contain p-2 transition-opacity duration-500 ${
             hovered && project.hoverVideo ? 'opacity-0' : 'opacity-100'
           }`}

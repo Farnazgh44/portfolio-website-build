@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { blurProps } from '@/lib/image-blur'
 
 export function CaseImageCarousel({ images }: { images: string[] }) {
   const [index, setIndex] = useState(0)
@@ -49,6 +50,8 @@ export function CaseImageCarousel({ images }: { images: string[] }) {
             alt={`Slide ${index + 1} of ${images.length}`}
             width={1200}
             height={800}
+            {...blurProps(images[index])}
+            sizes="(min-width: 768px) 900px, 100vw"
             className="w-full h-auto max-h-[55vh] object-contain mx-auto"
           />
         </div>
@@ -63,6 +66,19 @@ export function CaseImageCarousel({ images }: { images: string[] }) {
           <ChevronRight className="size-5" strokeWidth={1.75} />
         </button>
       </div>
+
+      {/* Preload the next slide so swiping feels instant */}
+      {images.length > 1 && (
+        <div className="hidden" aria-hidden>
+          <Image
+            src={images[(index + 1) % images.length]}
+            alt=""
+            width={1200}
+            height={800}
+            sizes="(min-width: 768px) 900px, 100vw"
+          />
+        </div>
+      )}
 
       {/* Dot indicators */}
       <div className="mt-4 flex justify-center gap-2">

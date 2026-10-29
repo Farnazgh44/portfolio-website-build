@@ -4,7 +4,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    // Pictures are resized for each visitor's screen and served as light WebP files.
+    // Keep those resized copies cached for a year.
+    minimumCacheTTL: 31536000,
   },
 }
 

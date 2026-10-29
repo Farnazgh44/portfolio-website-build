@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { X } from 'lucide-react'
+import { blurProps } from '@/lib/image-blur'
 
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   useEffect(() => {
@@ -26,11 +27,14 @@ function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: ()
         <X className="size-5" strokeWidth={1.5} />
       </button>
       <div onClick={(e) => e.stopPropagation()}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={src}
           alt={alt}
-          className="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain shadow-2xl"
+          width={1600}
+          height={1600}
+          sizes="90vw"
+          {...blurProps(src)}
+          className="h-auto max-h-[90vh] w-auto max-w-[90vw] rounded-2xl object-contain shadow-2xl"
         />
       </div>
     </div>
@@ -43,12 +47,14 @@ export function ClickableImage({
   width,
   height,
   className,
+  sizes = '(min-width: 880px) 880px, 100vw',
 }: {
   src: string
   alt: string
   width: number
   height: number
   className?: string
+  sizes?: string
 }) {
   const [open, setOpen] = useState(false)
 
@@ -59,6 +65,8 @@ export function ClickableImage({
         alt={alt}
         width={width}
         height={height}
+        sizes={sizes}
+        {...blurProps(src)}
         className={`cursor-zoom-in ${className ?? ''}`}
         onClick={() => setOpen(true)}
       />
